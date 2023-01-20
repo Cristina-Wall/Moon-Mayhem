@@ -1,0 +1,39 @@
+fileFormatVersion: 2
+guid: 39482b0783980a34383637d0cdacb355
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - titleScreen: {fileID: 8655853926550243321, guid: 2d019440b98d99441a4db968ad8cdac8, type: 3}
+  - pausedScreen: {instanceID: 0}
+  - optionsScreen: {fileID: 8225355498324165141, guid: fd44364cb1f295747858e09dc3368d8d, type: 3}
+  - inGameScreen: {instanceID: 0}
+  - howToPlayScreen: {instanceID: 0}
+  - failedScreen: {instanceID: 0}
+  - animationScreen: {instanceID: 0}
+  - oxyScript: {instanceID: 0}
+  - failScript: {instanceID: 0}
+  - staticCamera: {instanceID: 0}
+  - astronautPrefab: {fileID: 4960965299335350107, guid: 034926bc3122f4f47bce6e4cf64726fb, type: 3}
+  - rocketPrefab: {fileID: 3566616844913919511, guid: 72bc38c05a088eb48a59b937933096a9, type: 3}
+  - rocketWithCameraAngledPrefab: {fileID: 3566616844913919511, guid: d90e86055e374404ca39e496df8c595f, type: 3}
+  - rocketWithCameraStraightOnPrefab: {instanceID: 0}
+  - rocketBodyPrefab: {fileID: 2741726587905051059, guid: c873e5b2dfdfd3142b1673e365bc6f45, type: 3}
+  - rocketBottomPrefab: {fileID: 1688847023545346276, guid: 1157919adba517e478a5b63bedc887d0, type: 3}
+  - rocketLeg1Prefab: {fileID: 5089554747152969260, guid: ae62a2696a747a1419da0a6ca24f3f36, type: 3}
+  - rocketLeg2Prefab: {fileID: 1039792716941421378, guid: 6de914002a1eab747be37015c53af199, type: 3}
+  - rocketLeg3Prefab: {fileID: 6767187425211814515, guid: 76e7bf4c5608ea048979f62b53e5276a, type: 3}
+  - rocketLeg4Prefab: {fileID: 3576411771351410424, guid: e7045cd40547dc04a812ecfbf1018838, type: 3}
+  - rocketTopPrefab: {fileID: 5589585501310270920, guid: fe49c2f481b4cc9439ccbfa39aec327e, type: 3}
+  - rocketWindow1Prefab: {fileID: 4175420730854380249, guid: 5b641da584eb1e14791b8d5ca907cf7f, type: 3}
+  - rocketWindow2Prefab: {fileID: 1586886040483153909, guid: 69e978b5277dcfc47826ab3c8864fed1, type: 3}
+  - coinPrefab: {instanceID: 0}
+  - crashSource: {fileID: 4072158824754363972, guid: 0ef6375c33ee2fb4085633ff70a886a0, type: 3}
+  - soundSlider: {instanceID: 0}
+  - musicSlider: {instanceID: 0}
+  - lightBeam: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

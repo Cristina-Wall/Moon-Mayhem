@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &978744906154494857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978744906154494859}
+  - component: {fileID: 978744906154494858}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &978744906154494859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978744906154494857}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &978744906154494858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978744906154494857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39482b0783980a34383637d0cdacb355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleScreen: {fileID: 8655853926550243321, guid: 2d019440b98d99441a4db968ad8cdac8, type: 3}
+  pausedScreen: {fileID: 8548845799867997468, guid: cbe1e01f7b023714584d79a3ca82cff0, type: 3}
+  optionsScreen: {fileID: 8225355498324165141, guid: fd44364cb1f295747858e09dc3368d8d, type: 3}
+  inGameScreen: {fileID: 2807772628031384771, guid: 859ea747eeae5c348bb504365614dbe7, type: 3}
+  howToPlayScreen: {fileID: 0}
+  failedScreen: {fileID: 0}
+  animationScreen: {fileID: 0}
+  oxyScript: {fileID: 0}
+  failScript: {fileID: 0}
+  staticCamera: {fileID: 0}
+  crashSource: {fileID: 4072158824754363972, guid: 0ef6375c33ee2fb4085633ff70a886a0, type: 3}
+  astronautPrefab: {fileID: 2024937465240793479, guid: dada1bf061af6454d841f06dcc8dbf29, type: 3}
+  rocketPrefab: {fileID: 3566616844913919511, guid: 72bc38c05a088eb48a59b937933096a9, type: 3}
+  rocketWithCameraAngledPrefab: {fileID: 0}
+  rocketWithCameraStraightOnPrefab: {fileID: 0}
+  rocketBodyPrefab: {fileID: 2741726587905051059, guid: c873e5b2dfdfd3142b1673e365bc6f45, type: 3}
+  rocketBottomPrefab: {fileID: 1688847023545346276, guid: 1157919adba517e478a5b63bedc887d0, type: 3}
+  rocketLeg1Prefab: {fileID: 5089554747152969260, guid: ae62a2696a747a1419da0a6ca24f3f36, type: 3}
+  rocketLeg2Prefab: {fileID: 1039792716941421378, guid: 6de914002a1eab747be37015c53af199, type: 3}
+  rocketLeg3Prefab: {fileID: 6767187425211814515, guid: 76e7bf4c5608ea048979f62b53e5276a, type: 3}
+  rocketLeg4Prefab: {fileID: 3576411771351410424, guid: e7045cd40547dc04a812ecfbf1018838, type: 3}
+  rocketTopPrefab: {fileID: 5589585501310270920, guid: fe49c2f481b4cc9439ccbfa39aec327e, type: 3}
+  rocketWindow1Prefab: {fileID: 4175420730854380249, guid: 5b641da584eb1e14791b8d5ca907cf7f, type: 3}
+  rocketWindow2Prefab: {fileID: 1586886040483153909, guid: 69e978b5277dcfc47826ab3c8864fed1, type: 3}
+  coinPrefab: {fileID: 1521501743914941936, guid: f993ea97296cf7b46ad009a1d87e68cc, type: 3}
+  soundSlider: {fileID: 0}
+  musicSlider: {fileID: 0}
+  optSoundsVolume: 1
+  optMusicVolume: 1
+  lightBeam: {fileID: 0}

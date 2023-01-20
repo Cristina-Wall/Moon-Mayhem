@@ -1,0 +1,144 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class AstronautAnimationScript : MonoBehaviour
+{
+    Animator animator;
+    public static bool gameOn, sprintEnabled;
+    private CharacterController cc;
+    public Transform feetPosition;
+    public LayerMask mask;
+    public Camera thirdPersonPerspective;
+    public GameObject astronaut;
+    public float movementSpeed, jumpForce, rotationSpeed, sprintSpeed;
+    private float speed;
+    private AudioSource breathing;
+    public AudioSource backgroundMusic;
+    public Slider staminaBar;
+    public static GameObject selectedPart = null;
+    private float yPosition = 0f;
+    private float gravityValue = -1.62f;
+    private float sprintMeter = 0f;
+    public int totalRocketParts;
+    private int collectedRocketParts;
+    public OxygenLevelScript oxyScript;
+    public GameManagerScript gmScript;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        oxyScript = FindObjectOfType<OxygenLevelScript>();
+        animator = GetComponent<Animator>();
+        cc = GetComponent<CharacterController>();
+        staminaBar = GameManagerScript.instance.inGameScreen.transform.GetChild(4).gameObject.GetComponent<Slider>();
+        breathing = thirdPersonPerspective.GetComponent<AudioSource>();
+        backgroundMusic = astronaut.GetComponent<AudioSource>();
+        speed = movementSpeed;
+        sprintEnabled = true;
+        thirdPersonPerspective.enabled = true;
+        backgroundMusic.volume = GameManagerScript.instance.optMusicVolume;
+        PiecesFoundUpdater.setTotalRocketParts(totalRocketParts);
+        GameManagerScript.instance.inGameScreen.transform.GetChild(3).gameObject.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        backgroundMusic.volume = GameManagerScript.instance.optMusicVolume;
+        if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W)  || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) {
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1) {
+                animator.SetBool("isRunning", true);
+            }
+        }
+        else {
+            animator.SetBool("isRunning", false);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (gameOn){
+            var grounded =  Physics.Raycast(feetPosition.position, -Vector3.up, out RaycastHit hit, 0.75f, mask);
+            cc.SimpleMove(transform.forward * speed * Input.GetAxis("Vertical"));
+            transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed, 0);
+
+            if (Input.GetKey(KeyCode.LeftShift) && sprintEnabled){
+                speed = sprintSpeed;
+                sprintMeter += 15f * Time.fixedDeltaTime;
+            }
+            else {
+                speed = movementSpeed;
+                if (sprintMeter > 0f && sprintMeter < 100f) sprintMeter  -= 1f;
+            }
+
+            if (grounded){
+                if (Input.GetButton("Jump")){
+                    yPosition += Mathf.Sqrt(jumpForce * -1.5f * gravityValue);
+                    
+                }
+            }
+
+            yPosition += gravityValue * Time.deltaTime;
+            cc.Move(new Vector3( 0, yPosition, 0));
+            staminaBar.value = 1 - (sprintMeter/100);
+
+            if (sprintMeter >= 100f){
+                StartCoroutine(breathingSound());
+            }  
+
+            if (selectedPart != null){
+                if (Input.GetKey(KeyCode.Return)){
+                    GameManagerScript.instance.CollectPart();
+                }   
+            }
+        }
+    }
+
+    private IEnumerator breathingSound(){
+        breathing.volume = GameManagerScript.instance.optSoundsVolume;
+        sprintEnabled = false;
+        breathing.loop = true;
+
+        while (sprintMeter > 0f){
+            breathing.Play();
+            sprintMeter -= 25f;
+            yield return new WaitForSeconds(breathing.clip.length);
+        }
+
+        sprintMeter = 0f;
+        breathing.loop = false;
+        sprintEnabled = true;
+        StopCoroutine(breathingSound());
+    }
+
+    public void OnTriggerEnter(Collider other) {
+        if(other.tag == "Rocket") {
+            GameManagerScript.instance.inGameScreen.transform.GetChild(3).gameObject.SetActive(true);
+            selectedPart = other.gameObject.transform.parent.gameObject;
+        }
+        else if (other.tag == "Coin") {
+            //destroy the coin
+            Destroy(other.gameObject.transform.parent.gameObject);
+            //increase oxygen
+            oxyScript.IncreaseOxygen();
+        }
+        else if (other.tag == "FixedRocket") {
+            oxyScript.EndGame();
+            //destroy rocket
+            //Destroy(other.gameObject.transform.parent.gameObject);
+        }
+    }
+
+    void OnTriggerExit(Collider other) {
+        if (other.tag == "Rocket") {
+            GameManagerScript.instance.inGameScreen.transform.GetChild(3).gameObject.SetActive(false);
+            selectedPart = null;
+        }
+    }
+
+    public Vector3 GetCurrPosition() {
+        return transform.position;
+    }
+}

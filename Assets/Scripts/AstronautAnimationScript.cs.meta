@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 324bb14f8f9312d49bbfdc3174b2d15f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - feetPosition: {instanceID: 0}
+  - thirdPersonPerspective: {instanceID: 0}
+  - astronaut: {instanceID: 0}
+  - backgroundMusic: {instanceID: 0}
+  - staminaBar: {instanceID: 0}
+  - oxyScript: {instanceID: 0}
+  - gmScript: {fileID: 978744906154494858, guid: f8bac5995ea15e64a879eca74d01d185, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
